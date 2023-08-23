@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<style>
+@keyframes sample-ani {
+	0% {
+		transform: translate(0, 0);
+	}
+	50% {
+		transform: translate(500px, 0);
+	}
+	100% {
+		transform: translate(700px, 500px);
+	}
+}
+
+.box {
+	width: 100px;
+	height: 100px;
+	border: 2px solid black;
+	background: #fff000;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	animation: sample-ani 2s;
+	/*animation-direction: alternate-reverse;*/
+}
+
+.box:hover {
+	animation-play-state: paused;
+}
+	</style>
+</head>
+<body>
+<h1>Animation</h1>
+<div class="box">BOX</div>
+</body>
+</html>
