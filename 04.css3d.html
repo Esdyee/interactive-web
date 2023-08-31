@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<style>
+		.world {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 80vw;
+			height: 80vh;
+			background-color: yellow;
+			/*perspective: 500px;*/
+		}
+		.card {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 100px;
+			height: 150px;
+			border-radius: 0.5em;
+			font-size: 1rem;
+			background: red;
+			margin: 1em;
+			transform: perspective(500px) rotateY(45deg);
+		}
+	</style>
+</head>
+<body>
+	<div class="world">
+		<div class="card">Card</div>
+		<div class="card">Card</div>
+		<div class="card">Card</div>
+	</div>
+</body>
+</html>
