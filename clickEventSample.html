@@ -6,9 +6,28 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Interactive Web</title>
 	<link rel="stylesheet" href="css/reset.css">
-
+	<link rel="stylesheet" href="css/clickEventSample.css">
 </head>
 <body>
-
+	<div class="stage">
+		<div class="ilbuni one"></div>
+		<div class="ilbuni two"></div>
+		<div class="ilbuni three"></div>
+	</div>
 </body>
+<script>
+	{
+		// 이벤트 위임
+		const stage = document.querySelector('.stage');
+
+		function clickRemoveIlbuni(e) {
+			console.log(e.target.classList);
+			if(e.target.classList.contains('ilbuni')) {
+				stage.removeChild(e.target);
+			}
+		}
+
+		stage.addEventListener('click', clickRemoveIlbuni);
+	}
+</script>
 </html>
