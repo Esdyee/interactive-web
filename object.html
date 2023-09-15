@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<style>
+		.card {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 100px;
+			height: 150px;
+			border: 2px solid black;
+			border-radius: 10px;
+			font-size: 20px;
+			font-weight: bold;
+		}
+	</style>
+</head>
+<body>
+<h1>Object</h1>
+</body>
+<script>
+
+	class Card {
+		constructor(num, color) {
+			this.num = num;
+			this.color = color;
+			this.init();
+		}
+
+		init () {
+			const mainElem = document.createElement('div');
+			mainElem.style.color = this.color;
+			mainElem.innerHTML = this.num;
+			mainElem.classList.add('card');
+			document.body.appendChild(mainElem);
+		}
+	}
+
+	function Card(num, color) {
+		this.num = num;
+		this.color = color;
+		this.init();
+	}
+
+	Card.prototype = {
+		constructor: Card,
+		width: 100,
+		height: 150,
+		init: function () {
+			const mainElem = document.createElement('div');
+			mainElem.style.color = this.color;
+			mainElem.innerHTML = this.num;
+			mainElem.classList.add('card');
+			document.body.appendChild(mainElem);
+		}
+	}
+
+	const card1 = new Card(1, 'green');
+	const card2 = new Card(7, 'blue');
+
+
+</script>
+</html>
