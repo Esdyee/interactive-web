@@ -9,20 +9,63 @@
 <body>
 	<div class="stage">
 		<div class="door">
-			<div class="door-back"></div>
-			<div class="character"></div>
+			<div class="door-back">
+				<div class="character"></div>
+			</div>
 			<div class="door-body"></div>
 		</div>
 		<div class="door">
-			<div class="door-back"></div>
-			<div class="character"></div>
+			<div class="door-back">
+				<div class="character"></div>
+			</div>
 			<div class="door-body"></div>
 		</div>
 		<div class="door">
-			<div class="door-back"></div>
-			<div class="character"></div>
+			<div class="door-back">
+				<div class="character"></div>
+			</div>
 			<div class="door-body"></div>
 		</div>
 	</div>
 </body>
+<script>
+	{
+		const stage = document.querySelector('.stage');
+		const door = document.querySelectorAll('.door');
+		const doorBack = document.querySelectorAll('.door-back');
+		const character = document.querySelectorAll('.character');
+
+		let selectedItem;
+
+		function clickDoor(e) {
+			const target = e.target;
+			const currentTarget = e.currentTarget;
+
+			// const selectedItem = document.querySelector('.door-opened');
+			if(selectedItem) {
+				selectedItem.classList.remove('door-opened');
+			}
+
+			if(target.classList.contains('door-body')) {
+				target.parentNode.classList.toggle('door-opened');
+				selectedItem = target.parentNode;
+			}
+		}
+
+		//closed door after mouseout
+		function mouseOutDoor(e) {
+			const target = e.target;
+			const currentTarget = e.currentTarget;
+
+			if(target.classList.contains('stage') && selectedItem) {
+				// target.parentNode.classList.remove('door-opened');
+				selectedItem.classList.remove('door-opened');
+			}
+		}
+
+		stage.addEventListener('click', clickDoor);
+		stage.addEventListener('mouseover', mouseOutDoor);
+
+	}
+</script>
 </html>

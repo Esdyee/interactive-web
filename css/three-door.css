@@ -15,6 +15,7 @@
 }
 
 .door-back {
+	overflow: hidden;
 	position: absolute;
 	left: 0;
 	top: 0;
@@ -33,6 +34,7 @@
 	background-position: 50% 50%;
 	background-size: contain;
 	outline: 2px dashed red;
+	transform: translate3d(100%, 0, 0);
 }
 
 .door:nth-child(1) .character {
@@ -51,6 +53,8 @@
 	top: 0;
 	width: 100%;
 	height: 100%;
+	transition: 0.5s;
+	transform-origin: left;
 }
 .door:nth-child(1) .door-body {
 	background: rgba(255, 0, 0, 0.7);
@@ -62,4 +66,25 @@
 
 .door:nth-child(3) .door-body {
 	background: rgba(0, 0, 255, 0.7);
+}
+
+/*.door:hover .door-body {*/
+/*	transform: perspective(8000px) rotateY(-120deg);*/
+/*}*/
+
+/*.door:hover .character {*/
+/*	transform: translate3d(0, 0, 0);*/
+/*	transition: 0.5s;*/
+/*	transition-delay: 0.3s;*/
+/*}*/
+
+
+.door-opened .door-body {
+	transform: perspective(8000px) rotateY(-120deg);
+}
+
+.door-opened .character {
+	transform: translate3d(0, 0, 0);
+	transition: 0.5s;
+	transition-delay: 0.3s;
 }
