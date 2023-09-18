@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+<button class="btn">취소</button>
+</body>
+<script>
+	{
+		let timeId;
+		const btnElem = document.querySelector('.btn');
+
+		function sample() {
+			console.log('sample');
+
+			// 이 메소드는 초당 60회가 목적임
+			timeId = requestAnimationFrame(sample);
+		}
+
+		sample();
+
+		btnElem.addEventListener('click', function(e) {
+			cancelAnimationFrame(timeId);
+		});
+
+		// timeId = setTimeout(sample, 2000);
+		// console.log(timeId);
+		//
+		// clearTimeout(timeId);
+
+
+		// timeId = setInterval(sample, 1000);
+		//
+		// clearInterval(timeId);
+
+	}
+</script>
+</html>
