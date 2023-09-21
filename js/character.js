@@ -43,7 +43,8 @@ Character.prototype = {
 	scrollNumber: 0,
 	lastScrollTop: 0,
 	xPos: 0,
-	speed: 2,
+	speed: 0.4,
+	direction: "",
 	init: function () { // 초기화를 해서 해당 캐릭터가 아래 이벤트를 갖도록 설정
 		window.addEventListener('scroll', (e) => {
 			clearTimeout(this.scrollNumber);
@@ -57,8 +58,6 @@ Character.prototype = {
 				this.isScroll = false;
 				this.mainElem.classList.remove('running');
 			}, 500)
-
-			// console.log(this.scrollNumber, this.lastScrollTop);
 
 
 			// scrollup (lastScrollTop 사용)
@@ -76,33 +75,55 @@ Character.prototype = {
 
 
 		window.addEventListener('keydown', (e) => {
+
+
 			// left arrow key down
 			// Don't use keyCode, it's deprecated
 			if(e.code === 'ArrowLeft') {
+				this.direction = 'left';
 				this.mainElem.setAttribute('data-direction', 'left');
 				this.mainElem.classList.add('running');
-
-				console.log('left');
-				// this.run();
 				this.isRunning = true;
-
-				this.xPos -= this.speed;
-				this.mainElem.style.left = this.xPos + '%';
+				this.run(this);
 			}
 
 			if(e.code === 'ArrowRight') {
+				this.direction = 'right';
 				this.mainElem.setAttribute('data-direction', 'right');
 				this.mainElem.classList.add('running');
-
-				console.log('right');
-				// this.run();
 				this.isRunning = true;
+				this.run(this);
 			}
 		});
 
 		window.addEventListener('keyup', (e) => {
 			this.mainElem.classList.remove('running');
 			this.isRunning = false;
+		});
+	},
+	run: function () {
+		if(this.direction === 'left') {
+			this.xPos -= this.speed;
+		}
+		if(this.direction === 'right') {
+			this.xPos += this.speed;
+		}
+
+		if(this.xPos < 2) {
+			this.xPos = 2;
+		}
+
+		if(this.xPos > 88) {
+			this.xPos = 88;
+		}
+
+		// console.log(this.xPos, this.speed);
+		this.mainElem.style.left = this.xPos + '%'; // 현재 캐릭터 Elem을 변경
+
+		requestAnimationFrame( () => {
+			if(this.isRunning) {
+				this.run();
+			}
 		});
 	}
 }
