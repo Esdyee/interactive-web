@@ -6,6 +6,7 @@
 	<link rel="stylesheet" href="../css/reset.css">
 	<link rel="stylesheet" href="../css/style.css">
 	<script defer src="../js/wall3d.js"></script>
+	<script defer src="../js/character.js"></script>
 </head>
 <body>
 	<div class="progress-bar-con">
@@ -46,4 +47,16 @@
 	</div>
 </div>
 </body>
+<script>
+
+	addEventListener('click', newCharacterHandler)
+
+	function newCharacterHandler(e) {
+		console.log(e.clientX / window.innerWidth * 100); // x Position 비율
+
+		new Character({
+			xPos: e.clientX / window.innerWidth * 100,
+		});
+	}
+</script>
 </html>
