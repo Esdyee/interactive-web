@@ -32,7 +32,7 @@ function Character(info) {
 
 	document.querySelector('.stage').appendChild(this.mainElem);
 	this.mainElem.style.left = info.xPos + '%';
-
+	this.xPos = info.xPos;
 	this.init(); // 초기화
 }
 
@@ -42,6 +42,8 @@ Character.prototype = {
 	isRunning: false,
 	scrollNumber: 0,
 	lastScrollTop: 0,
+	xPos: 0,
+	speed: 2,
 	init: function () { // 초기화를 해서 해당 캐릭터가 아래 이벤트를 갖도록 설정
 		window.addEventListener('scroll', (e) => {
 			clearTimeout(this.scrollNumber);
@@ -83,6 +85,9 @@ Character.prototype = {
 				console.log('left');
 				// this.run();
 				this.isRunning = true;
+
+				this.xPos -= this.speed;
+				this.mainElem.style.left = this.xPos + '%';
 			}
 
 			if(e.code === 'ArrowRight') {
