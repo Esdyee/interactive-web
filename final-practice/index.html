@@ -14,8 +14,8 @@
 	</div>
 
 <div class="select-character">
-	<button class="select-character-btn select-character-btn-ilbuni" data-char="ilbuni">일분이</button>
-	<button class="select-character-btn select-character-btn-ragril" data-char="ragirl">라면소녀</button>
+	<button class="select-character-btn select-character-btn-ilbuni" data-char="ilbuni"></button>
+	<button class="select-character-btn select-character-btn-ragirl" data-char="ragirl"></button>
 </div>
 
 <div class="world">
@@ -30,12 +30,12 @@
 			</section>
 			<section class="wall wall-front wall-front-b">
 				<div class="wall-content">
-					<h2 class="wall-title">Hello</h2>
+					<h2 class="wall-title">hello</h2>
 				</div>
 			</section>
 			<section class="wall wall-front wall-front-c">
 				<div class="wall-content">
-					<h2 class="wall-title">Hola</h2>
+					<h2 class="wall-title">hola</h2>
 				</div>
 			</section>
 			<section class="wall wall-front wall-front-d">
@@ -52,7 +52,13 @@
 	addEventListener('click', newCharacterHandler)
 
 	function newCharacterHandler(e) {
-		console.log(e.clientX / window.innerWidth * 100); // x Position 비율
+		console.log(e.target.closest('.select-character-btn'));
+
+		if(e.target.closest('.select-character-btn')) {
+			const bodyElem = document.querySelector('body');
+			bodyElem.dataset.char = e.target.closest('.select-character-btn').dataset.char;
+			return false;
+		}
 
 		new Character({
 			xPos: e.clientX / window.innerWidth * 100,

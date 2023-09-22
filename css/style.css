@@ -4,7 +4,10 @@ body {
 	color: #555;
 	background: #fff000;
 	height: 500vh;
+	transition: 1s;
 }
+
+
 
 .world {
 	position: fixed;
@@ -203,6 +206,9 @@ body {
 body[data-char='ragirl'] .character {
 	width: 12vw;
 	height: calc(12vw * 1.4135);
+}
+body[data-char='ragirl'] {
+	background-color: orange;
 }
 body[data-char='ragirl'] .character-head {
 	left: calc(23 / 948 * 100%);
