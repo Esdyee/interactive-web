@@ -75,7 +75,8 @@ Character.prototype = {
 
 
 		window.addEventListener('keydown', (e) => {
-
+			// console.log(this.isRunning);
+			if (this.isRunning) return;
 
 			// left arrow key down
 			// Don't use keyCode, it's deprecated
